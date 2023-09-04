@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hoverable Sliding Navigation Buttons</title>
+<style>
+body {
+  font-family: sans-serif;
+}
+
+.nav-bar {
+  width: 200px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #f1f1f1;
+  overflow-y: auto;
+  z-index: 1;
+}
+
+.nav-bar .button {
+  display: block;
+  width: 100px;
+  height: 50px;
+  background-color: #ccc;
+  color: black;
+  text-align: center;
+  cursor: pointer;
+}
+
+.nav-bar .button:hover {
+  background-color: #555;
+  color: white;
+}
+
+.nav-bar .button.sliding {
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-bar .button.sliding:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ccc;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.nav-bar .button.sliding:hover:before {
+  opacity: 1;
+}
+
+.nav-bar .button.sliding:hover .content {
+  transform: translateX(100px);
+}
+
+.nav-bar .content {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 100px;
+  height: 100%;
+  background-color: #fff;
+  transition: transform 0.4s ease-in-out;
+}
+
+.nav-bar .button.purple {
+  background-color: #a020f0;
+}
+
+.nav-bar .button.green {
+  background-color: #2ecc71;
+}
+
+.nav-bar .button.blue {
+  background-color: #3498db;
+}
+
+.nav-bar .button.orange {
+  background-color: #f1c40f;
+}
+
+.content {
+  margin-left: 200px;
+}
+
+@media screen and (max-width: 700px) {
+  .nav-bar {
+    width: 100%;
+  }
+
+  .content {
+    margin-left: 0;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="nav-bar">
+  <button class="button purple sliding">Purple</button>
+  <button class="button green sliding">Green</button>
+  <button class="button blue sliding">Blue</button>
+  <button class="button orange sliding">Orange</button>
+</div>
+
+<div class="content">
+  <h1>This is the content</h1>
+</div>
+
+</body>
+</html>
